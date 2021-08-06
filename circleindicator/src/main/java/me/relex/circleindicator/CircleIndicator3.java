@@ -34,13 +34,19 @@ public class CircleIndicator3 extends BaseCircleIndicator {
     }
 
     public void setViewPager(@Nullable ViewPager2 viewPager) {
-        mViewpager = viewPager;
-        if (mViewpager != null && mViewpager.getAdapter() != null) {
-            mLastPosition = -1;
-            createIndicators();
+        if(viewPager == null) {
+            mViewpager.setAdapter(null);
             mViewpager.unregisterOnPageChangeCallback(mInternalPageChangeCallback);
-            mViewpager.registerOnPageChangeCallback(mInternalPageChangeCallback);
-            mInternalPageChangeCallback.onPageSelected(mViewpager.getCurrentItem());
+            mViewpager = null;
+        } else {
+            mViewpager = viewPager;
+            if (mViewpager.getAdapter() != null) {
+                mLastPosition = -1;
+                createIndicators();
+                mViewpager.unregisterOnPageChangeCallback(mInternalPageChangeCallback);
+                mViewpager.registerOnPageChangeCallback(mInternalPageChangeCallback);
+                mInternalPageChangeCallback.onPageSelected(mViewpager.getCurrentItem());
+            }
         }
     }
 
