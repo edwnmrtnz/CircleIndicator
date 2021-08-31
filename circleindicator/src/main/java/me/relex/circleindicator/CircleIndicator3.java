@@ -35,7 +35,7 @@ public class CircleIndicator3 extends BaseCircleIndicator {
 
     public void setViewPager(@Nullable ViewPager2 viewPager) {
         if(viewPager == null) {
-            if(mViewPager != null) {
+            if(mViewpager != null) {
                 mViewpager.setAdapter(null);
                 mViewpager.unregisterOnPageChangeCallback(mInternalPageChangeCallback);
                 mViewpager = null;
